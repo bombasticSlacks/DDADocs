@@ -30,8 +30,9 @@ jobs:
         uses: actions/checkout@v3
       - name: Checkout
         uses: actions/checkout@v3
-        repository: https://github.com/CleverRaven/Cataclysm-DDA.git
-        path: DDA
+        with:
+          repository: https://github.com/CleverRaven/Cataclysm-DDA.git
+          path: DDA
       - name: copy docs
         run: cp -r ./DDA/docs ./Game 
       - name: manipulate anchors
