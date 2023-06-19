@@ -36,7 +36,7 @@ jobs:
       - name: copy docs
         run: cp -r /home/runner/work/DDADocs/DDADocs/DDA/doc/* ./Game 
       - name: copy illformed files
-        run: cp /home/runner/work/DDADocs/DDADocs/DDA/data/json/LOADING_ORDER.md ./Game/JSON_LOADING_ORDER.md
+        run: cp --remove-destination /home/runner/work/DDADocs/DDADocs/DDA/data/json/LOADING_ORDER.md ./Game/JSON_LOADING_ORDER.md
       - name: manipulate anchors
         run: python3 ./convert.py $(find ./Game -type f -name "*.md")
       - name: manipulate anchors strip %20
