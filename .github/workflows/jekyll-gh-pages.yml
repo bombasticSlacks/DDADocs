@@ -34,7 +34,7 @@ jobs:
           repository: CleverRaven/Cataclysm-DDA
           path: DDA
       - name: copy docs
-        run: cp -r /home/runner/work/DDADocs/DDADocs/DDA/doc ./Game 
+        run: cp -r /home/runner/work/DDADocs/DDADocs/DDA/doc/* ./Game 
       - name: copy illformed files
         run: cp /home/runner/work/DDADocs/DDADocs/DDA/data/json/LOADING_ORDER.md ./Game/JSON_LOADING_ORDER.md
       - name: manipulate anchors
