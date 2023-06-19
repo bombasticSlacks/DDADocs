@@ -34,7 +34,7 @@ jobs:
           repository: CleverRaven/Cataclysm-DDA
           path: DDA
       - name: copy docs
-        run: cp -r ./DDA/docs ./Game 
+        run: cp -r /home/runner/work/DDADocs/DDADocs/DDA/ ./Game 
       - name: manipulate anchors
         run: python3 ./convert.py $(find ./Game -type f -name "*.md")
       - name: manipulate anchors strip %20
