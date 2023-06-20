@@ -24,10 +24,20 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  check_date:
+    runs-on: ubuntu-latest
+    name: Check latest commit
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          repository: CleverRaven/Cataclysm-DDA
+      - name: print latest_commit
+        run: echo ${{ github.sha }}
+      - id: should_run
+        name: check latest commit is less than a day
+        run: test -z $(git rev-list  --after="24 hours"  ${{ github.sha }})
   # Build job
   build:
-    needs: check_date
-    if: ${{ needs.check_date.outputs.should_run != 'false' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
