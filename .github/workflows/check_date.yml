@@ -1,0 +1,16 @@
+  check_date:
+    runs-on: ubuntu-latest
+    name: Check latest commit
+    outputs:
+      should_run: ${{ steps.should_run.outputs.should_run }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: print latest_commit
+        run: echo ${{ github.sha }}
+        with:
+          repository: CleverRaven/Cataclysm-DDA
+
+      - id: should_run
+        continue-on-error: true
+        name: check latest commit is less than a day
+        run: test -z $(git rev-list  --after="24 hours"  ${{ github.sha }}) && echo "::set-output name=should_run::false"

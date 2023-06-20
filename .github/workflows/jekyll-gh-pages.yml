@@ -5,6 +5,8 @@ on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
+  schedule:
+    - cron: '0 0 * * *' # runs daily at 00:00
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -24,6 +26,8 @@ concurrency:
 jobs:
   # Build job
   build:
+    needs: check_date
+    if: ${{ needs.check_date.outputs.should_run != 'false' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -37,8 +41,6 @@ jobs:
         run: cp -r /home/runner/work/DDADocs/DDADocs/DDA/doc/* ./Game 
       - name: copy illformed files
         run: cp --remove-destination /home/runner/work/DDADocs/DDADocs/DDA/data/json/LOADING_ORDER.md ./Game/JSON_LOADING_ORDER.md
-      - name: remove illbehaved files
-        run: rm ./Game/JSON_INFO.md
       - name: manipulate anchors
         run: python3 ./convert.py $(find ./Game -type f -name "*.md")
       - name: manipulate anchors strip %20
