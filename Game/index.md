@@ -3,6 +3,6 @@
 
 ![Picture](https://cataclysmdda.org/assets/images/showcase-ultica.png)
 
-This should be an up-to-date copy of the game docs for contributing.
+This should be an up-to-date copy of the game docs for contributing. If something isn't rendering well please update the original doc so it behaves using standard markdown.
 
 Hosted By: [Dillon Matchett](https://github.com/bombasticSlacks) Docs licensed under: [CC BY SA 3.0](https://github.com/CleverRaven/Cataclysm-DDA/blob/master/LICENSE.txt) Originally At: [GitHub](https://github.com/CleverRaven/Cataclysm-DDA) 
